@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "assets/bootstrap/css/bootstrap.min.css" %}">
+
+    <link rel="stylesheet" href="{% static "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic" %}" >
+    <link rel="stylesheet" href="{% static "assets/fonts/font-awesome.min.css" %}" >
+    <link rel="stylesheet" href="{% static "assets/css/user.css" %}" >
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="col-md-12">
+                <a class="navbar-brand navbar-link" href="#"> <i class="fa fa-envira"></i> The Beautiful Site to Inspire Conversation</a> 
+                <div class="col-md-6"></div>
+                <a class="navbar-brand navbar-link" href="">Home</a>
+                <a class="navbar-brand navbar-link" href="">Sign In</a>
+                
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+            </div>
+            
+        </div>
+    </nav>
+    <div class="jumbotron hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-push-7 phone-preview">
+                    <div class="iphone-mockup"></div>
+                </div>
+                <div class="col-md-pull-3 get-it">
+                    <h1>My Fantastic User Dashboard</h1>
+                    <p>Written by PCF, using BootStrap for responsiveness. I'm building a cool application using a MVC framework</p>
+                    <p></p>
+                </div>
+                <div class="col-md-5">
+
+                </div>
+                <div class="col-md-3">
+                <form action="/signin">
+                    <button class="btn btn-info" type="submit">PRESS to START</button>
+                </form>
+                </div>
+                <div class="col-md-12">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="testimonials">
+        <h2 class="text-center">     <i class="glyphicon glyphicon-heart"></i>  ~ Love It! ~ <i class="glyphicon glyphicon-heart"></i></h2>
+        <blockquote>
+            <p>Let's have a great conversation! </p>
+            <footer>Anyone on social media</footer>
+        </blockquote>
+    </section>
+    <section class="features">
+        <div class="container">
+
+            
+            <div class="row">
+                
+                <div class="col-sm-4 icon-feature"><i class="fa fa-id-card fa-2x" ></i>
+                    <h4>Manage Users</h4>
+                    <p>Using this application, you'll learn how to add, remove and add users to this application</p>
+                </div>
+                <div class="col-sm-4 icon-feature"><i class="fa fa-comments fa-2x"></i>
+                    <h4>Leave Messages</h4>
+                    <p>Users will be able to leave a message to another user using this application.</p>
+                </div>
+                <div class="col-sm-4 icon-feature"><i class="fa fa-user-circle-o fa-2x"></i>
+                    <h4>Edit user Information</h4>
+                    <p>Admins will be able to edit another user's information (email address, first name, last name, etc)</p>
+                </div>
+                 
+            </div>
+        </div>
+    </section>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h5>PCF © 2017</h5></div>
+                <div class="col-sm-6 social-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+            </div>
+        </div>
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

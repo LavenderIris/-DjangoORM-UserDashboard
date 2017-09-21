@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>New User</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        {% load static %}
+        <link rel="stylesheet" href="{% static "assets/bootstrap/css/bootstrap.min.css" %}">
+        <link rel="stylesheet" href="{% static "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic" %}" >
+        <link rel="stylesheet" href="{% static "assets/fonts/font-awesome.min.css" %}" >
+        <link rel="stylesheet" href="{% static "assets/css/user.css" %}" >
+
+    </head>
+    <style>
+        .box{
+            position: relative;
+            margin-left: 0%;
+            margin-top: 0%;
+            display: inline-block;
+           
+            padding: 10px;
+            width: 30%;
+            vertical-align: top;
+
+        }
+
+        #bigger {
+            width: 60%;
+        }
+
+        p{
+            margin: 5px;
+            padding: 0px;
+        }
+
+        body {
+            background-color: lightgrey;
+        }
+
+    </style>
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="col-md-12">
+                    <a class="navbar-brand navbar-link" href="#"> <i class="fa fa-envira"></i> The Beautiful Site to Inspire Conversation</a> 
+                    <a class="navbar-brand navbar-link spacing" href="/dashboard/admin"><b>Dashboard</b></a>
+                    
+                    <a class="navbar-brand navbar-link spacing" href="/">Profile</a>
+                    <div class="col-md-3"></div>
+                    <a class="navbar-brand navbar-link spacing" href="/signin">Logoff</a>
+                    
+                    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                </div>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                </div>
+            </div>
+        </nav>
+
+        <div class = "box">
+            <h2>Add a New User</h2>
+            
+            <form action="/add_user" method="post">
+                {% csrf_token %}
+
+                <p>First Name:<input type="text" name='first_name'></p>
+                <p>Last Name:<input type="text" name='last_name'></p>
+                <p>Email:<input type="text" name='email'></p>
+                <p>Password:<input type="text" name='pw'></p>
+                <p>Confirm pw:<input type="text" name='pw_confirm'></p>
+                
+                <input type="submit" value="Create">
+            </form>
+            <a href="/dashboard/admin">Go back to dashboard</a>
+        
+        </div>
+      
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </body>
+</html>

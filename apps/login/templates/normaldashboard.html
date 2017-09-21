@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>User Dashboard</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        {% load static %}
+        <link rel="stylesheet" href="{% static "assets/bootstrap/css/bootstrap.min.css" %}">
+        <link rel="stylesheet" href="{% static "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic" %}" >
+        <link rel="stylesheet" href="{% static "assets/fonts/font-awesome.min.css" %}" >
+        <link rel="stylesheet" href="{% static "assets/css/user.css" %}" >
+
+    </head>
+
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="col-md-12">
+                    <a class="navbar-brand navbar-link" href="#"> <i class="fa fa-envira"></i> The Beautiful Site to Inspire Conversation</a> 
+                    <a class="navbar-brand navbar-link spacing" href="/dashboard/admin"><b>Dashboard</b></a>
+                   
+                    <a class="navbar-brand navbar-link spacing" href="/">Profile</a>
+                    <div class="col-md-3"></div>
+                    <a class="navbar-brand navbar-link spacing" href="/signin">Logoff</a>
+                    
+                    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                </div>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                </div>
+            </div>
+        </nav>
+
+        <div class = "main_body">
+            <div><h2>Manage Users</h2> <button>Add New</button></div>
+            
+            
+            <table id='b'>
+                <col width="20">
+                <col width="160">
+                <col width="150">
+                <col width="150">
+                <col width="80">
+                <col width="80">
+                <tr class="heading_color">
+                    <th id='b'> ID</th>
+                    <td id='b'> Name</td>
+                    <td id='b'> Email</td>
+                    <td id='b'> Created at</td>
+                    
+                    <td id='b'> User Level</td>
+                   
+                </tr>
+                
+                {% for user in users %}
+                <tr class ='row_color' >
+                    <td id='b'> {{user.id}} </td>
+                    <td id='b'> {{user.first_name}} {{user.last_name}} </td>
+                    <td id='b'> {{user.email}}</td>
+                    <td id='b'> {{user.created_at}}</td>
+                    <td id='b'>  {% if user.user_level == 0 %}
+                                    Admin
+                                {% else %}
+                                    Normal 
+                                {% endif %}
+                    </td>
+                 
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+
+    </body>
+    <style>
+        .main_body{
+            margin-left: 10%;
+        }
+
+        .heading_color {
+            background-color: paleturquoise;
+        }
+
+        .row_color {
+            background-color: #f7f4f4;
+        }
+        
+        .box{
+            position: relative;
+            margin-left: 0%;
+            margin-top: 0%;
+            display: inline-block;
+            
+            padding: 10px;
+            width: 30%;
+            vertical-align: top;
+
+        }
+
+        #bigger {
+            width: 60%;
+        }
+
+        p{
+            margin: 5px;
+            padding: 0px;
+        }
+
+        body {
+            background-color: lightgrey;
+        }
+
+        #b {
+            border: 1px solid black;
+        }
+
+        .spacing{
+            position: relative;
+            top: 5px;
+        }
+        
+        h2{
+            display: inline-block;
+        }
+        
+        button{
+            margin-left: 27%;
+            display: inline-block;
+        }
+
+    </style>
+
+</html>

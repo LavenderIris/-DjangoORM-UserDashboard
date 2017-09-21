@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Users Show</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "assets/bootstrap/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic" %}" >
+    <link rel="stylesheet" href="{% static "assets/fonts/font-awesome.min.css" %}" >
+    <link rel="stylesheet" href="{% static "assets/css/user.css" %}" >
+
+</head>
+<style>
+    p {
+        padding: 0px 0px 0px 0px;
+        margin: 0px 0px 0px 0px;
+    }
+
+    .i_b{
+        margin-top: 8px;
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 20px;
+    }
+
+    button{
+        background-color: #E4D8DA;
+    }
+
+    .m_b{
+        margin-bottom: 8px;
+    }
+
+    .spacing{
+        position: relative;
+        top: 5px;
+    }
+    
+    h2{
+        display: inline-block;
+    }
+    
+    button{
+        margin-left: 34%;
+        display: inline-block;
+    }
+
+    body {
+        background-color: lightgrey;
+    }
+
+</style>
+<body>
+
+
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="col-md-12">
+                <a class="navbar-brand navbar-link" href="#"> <i class="fa fa-envira"></i> The Beautiful Site to Inspire Conversation</a> 
+                <a class="navbar-brand navbar-link spacing" href="/dashboard/admin">Dashboard</a>
+                
+                <a class="navbar-brand navbar-link spacing" href="#"><b>Profile</b></a>
+                <div class="col-md-3"></div>
+                <a class="navbar-brand navbar-link spacing" href="/signin">Logoff</a>
+                
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+            </div>
+        </div>
+    </nav>
+
+
+    <div class ="i_b">
+        <h1>Edit User# {{user.id}}</h1>
+
+        <form action="/users/process_admin_edit" method='POST' class='i_b'>
+            {% csrf_token %}
+            <p class='m_b'>Email: <input type="text" name = 'email' value= '{{user.email}}' ></p>
+            <p>First Name: <input type="text" name = 'first_name' value= '{{user.first_name}}' ></p>
+            <p>Last Name: <input type="text" name = 'last_name' value ='{{user.last_name}}' > </p>
+            
+            <input type="hidden" name ='id' value='{{user.id}}'>
+
+            <p>User level: <select name="user_level">
+                <option value="normal">Normal</option>
+                <option value="admin">Admin</option>
+            </select> </p>
+            <button type="submit" name="update">Edit</button>
+
+        </form>
+
+        <br>
+        <a href="/users/{{user.id}}">Show</a>
+        <a href="/users">Go Back</a>
+    </div>
+    
+    <div class ='i_b'>
+        <h1>Change password</h1>
+        <form action="">
+            <p>New Password<input type="text" name='pw'></p>
+            <p>Confirm pw  <input type="text" name='pw_confirm'></p>
+        </form>
+    </div>
+
+
+    
+    
+    <!-- error messages -->
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+</body>
+</html>
