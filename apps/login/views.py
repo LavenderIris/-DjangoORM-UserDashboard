@@ -51,9 +51,15 @@ def login(request):
             hashed_pw = user[0].pw
             if bcrypt.checkpw( myrequest['pw'].encode('utf8'), hashed_pw.encode('utf8') )  :
                 if user[0].user_level == 0:
+                    request.session['login']= True
+                    request.session['first_name']= user[0].first_name
+                    request.session['last_name']= user[0].last_name    
+                    request.session['email']= user[0].email  
+                
                     return redirect('/dashboard/admin')
                 else:
                     return redirect('/dashboard')
+                                
                 return redirect('/success')
             else:
                 errors = {}
